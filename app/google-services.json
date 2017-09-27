@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "19145620597",
+    "firebase_url": "https://operationgreentampon.firebaseio.com",
+    "project_id": "operationgreentampon",
+    "storage_bucket": "operationgreentampon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19145620597:android:de385600e4bf039d",
+        "android_client_info": {
+          "package_name": "com.example.leakypete.operationgreentampon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19145620597-evg4mf2mpqjo92gncf4617llb789ssjr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leakypete.operationgreentampon",
+            "certificate_hash": "182d0fbb2ac97c304075e6fb7188c166c522dffc"
+          }
+        },
+        {
+          "client_id": "19145620597-f13ovicabn2vqn3bml01gt5e214kr818.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2NxsFYal1DPncJcRFkJ300whbs4dFElE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19145620597-f13ovicabn2vqn3bml01gt5e214kr818.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

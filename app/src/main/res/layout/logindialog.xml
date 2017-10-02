@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
             android:hint="Password"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <Button

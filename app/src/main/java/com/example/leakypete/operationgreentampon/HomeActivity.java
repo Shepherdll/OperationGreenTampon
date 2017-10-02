@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseUser user;
     Dialog loginDialog,signDialog;
     Button login,signUp,createAcc;
-    TextView forgotPass;
+    TextView forgotPass, linkLogin;
     EditText username,passwordInput,usernameInput,emailInput,passwordInput2,reEnterPasswordInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.input_username);
         passwordInput = (EditText) findViewById(R.id.input_password2);
         forgotPass = (TextView) findViewById(R.id.txt_forgot);
+
         mDatabase= FirebaseDatabase.getInstance().getReference().child("Users");
 
 
@@ -251,13 +252,15 @@ public class HomeActivity extends AppCompatActivity {
         passwordInput2 = signDialog.findViewById(R.id.input_password2);
         reEnterPasswordInput = signDialog.findViewById(R.id.input_reEnterPassword);
         createAcc = signDialog.findViewById(R.id.btn_signup);
+        linkLogin = signDialog.findViewById(R.id.link_login2);
 
         login.setEnabled(true);
         signUp.setEnabled(true);
+        linkLogin.setEnabled(true);
 
-      createAcc.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
+        createAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
               if (!validate()) {
                   onSignupFailed();
@@ -265,7 +268,6 @@ public class HomeActivity extends AppCompatActivity {
               }
 
               createAcc.setEnabled(false);
-
 
               final String userName = usernameInput.getText().toString().trim();
               final String email = emailInput.getText().toString().trim();
@@ -295,12 +297,20 @@ public class HomeActivity extends AppCompatActivity {
 
                       }
 
-
                   }
 
 
 
               });
+
+              linkLogin.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      signDialog.cancel();
+                  }
+
+              });
+
 
         /*Query query = mDatabase.orderByChild("Email").equalTo(email);
         query.addListenerForSingleValueEvent(new ValueEventListener() {

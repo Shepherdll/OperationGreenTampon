@@ -88,7 +88,7 @@
         android:textColor= "@color/colorAccent" />
 
     <TextView
-        android:id="@+id/link_login"
+        android:id="@+id/link_login2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"

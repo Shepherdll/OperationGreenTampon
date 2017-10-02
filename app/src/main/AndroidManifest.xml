@@ -48,6 +48,10 @@
         <activity
             android:name=".ProfAcitivty"
             android:label=""
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProfilePageAdapter"
+            android:label="@string/title_activity_profile_page_adapter"
             android:theme="@style/AppTheme"></activity>
     </application>
 

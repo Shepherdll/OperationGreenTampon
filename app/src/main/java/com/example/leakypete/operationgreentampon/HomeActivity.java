@@ -138,9 +138,13 @@ public class HomeActivity extends AppCompatActivity {
                 case 0:
                     TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
                             .normalImageRes(R.drawable.ic_trend)
-                            .normalText("Butter Doesn't fly!").listener(new OnBMClickListener() {
+                            .normalText("Create a Post").listener(new OnBMClickListener() {
                                 @Override
                                 public void onBoomButtonClick(int index) {
+                                Intent createPostActivity = new Intent(HomeActivity.this, CreatePostActivity.class);
+                                    startActivity(createPostActivity);
+                                    finish();
+                                    overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 
                                 }
                             });

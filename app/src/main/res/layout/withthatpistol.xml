@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/with_that_pistol_layout"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/btnComments"
+        android:layout_width="83dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="75dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnUpvote"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="88dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="76dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnComments"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <Button
+        android:id="@+id/btnUpvote"
+        android:layout_width="87dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteY="68dp" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="285dp"
+        android:layout_height="39dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="22dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgThumbnail"
+        android:layout_width="104dp"
+        android:layout_height="39dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintLeft_toRightOf="@+id/txtTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/piece" />
+
+    <TextView
+        android:id="@+id/txtUserID"
+        android:layout_width="117dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

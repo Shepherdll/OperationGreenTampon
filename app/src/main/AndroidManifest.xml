@@ -39,11 +39,6 @@
             android:exported="true"
             android:label="@string/title_activity_forgotpassword"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SetupActivity"
-            android:exported="true"
-            android:label="@string/title_activity_setup"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OpenGLActivity" />
         <activity
             android:name=".ProfAcitivty"
@@ -52,7 +47,12 @@
         <activity
             android:name=".ProfilePageAdapter"
             android:label="@string/title_activity_profile_page_adapter"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".PostViewActivity" />
+        <activity
+            android:name=".CreatePostActivity"
+            android:label=""
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

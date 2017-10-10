@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.leakypete.operationgreentampon.PostViewActivity;
 import com.example.leakypete.operationgreentampon.R;
+import com.example.leakypete.operationgreentampon.models.PostMalone;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,9 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by Peter on 6/6/2017.
- */
+
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private ArrayList<PostMalone> mPosts;
@@ -71,76 +70,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         final TextView title = holder.mTitle;
         title.setText(post.getTitle());
 
+        holder._email = post.getEmail();
         ItemImage = holder.mThumbnail;
 
         dickass = post.getUsername();
 
         final TextView usernameID = holder.mPostID;
         usernameID.setText(post.getUsername());
-        mAuth = FirebaseAuth.getInstance();
-        mRef = FirebaseDatabase.getInstance().getReference("Posts");
-
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
-                    {
-
-                            if(postSnapshot.hasChild("Title"))
-                            {
-                                title.setText(postSnapshot.child("Title").getValue(String.class));
-                                break;
-                            }
-                            else
-                            {
-                                title.setText("N/A");
-                                break;
-                            }
-
-
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-                            if(postSnapshot.hasChild("Name"))
-                            {
-                                usernameID.setText(postSnapshot.child("Name").getValue(String.class));
-                                break;
-                            }
-                            else
-                            {
-                                usernameID.setText("N/A");
-                                break;
-                            }
-                        }
 
 
 
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
-
-            }
-        });
 
 
 
@@ -156,6 +95,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private ImageView mThumbnail;
         private TextView mTitle;
         private TextView mPostID;
+        private String _email;
         private ConstraintLayout layout;
         private Button mUpvote;
         private Button mComments;
@@ -180,7 +120,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             // intent.putExtra("image_id", );
             intent.putExtra("title", mTitle.getText().toString());
             intent.putExtra("username", mPostID.getText().toString());
-
+            intent.putExtra("email",_email);
             context.startActivity(intent);
         }
     }

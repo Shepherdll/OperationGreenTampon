@@ -45,7 +45,7 @@ public class PostsFragment extends Fragment {
         posts = new ArrayList<>();
         adapter = new PostAdapter(posts, getContext());
         auth = FirebaseAuth.getInstance();
-        mPostRef = FirebaseDatabase.getInstance().getReference().child("Posts").child(auth.getCurrentUser().getEmail().replace(".",","));
+        mPostRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
 
 
@@ -58,10 +58,10 @@ public class PostsFragment extends Fragment {
                         String name = postSnapshot.child("Name").getValue(String.class);
                         String content = postSnapshot.child("Content").getValue(String.class);
                         String title = postSnapshot.child("Title").getValue(String.class);
+                        String email = postSnapshot.child("Email").getValue(String.class);
 
-
-
-                        posts.add(new PostMalone(title, name, content));
+                        if(email.equals(auth.getCurrentUser().getEmail()))
+                            posts.add(new PostMalone(title, name, content));
 
                     }
 

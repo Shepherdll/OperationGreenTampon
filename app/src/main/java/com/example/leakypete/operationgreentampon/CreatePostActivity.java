@@ -73,7 +73,7 @@ public class CreatePostActivity extends AppCompatActivity {
                         {
                             name = penisdick.child("Name").getValue(String.class);
                             post.put("Name", name);
-                            mPostsRef.child(email.replace(".",",")).push().setValue(post);
+                            mPostsRef.push().setValue(post);
                             break;
                         }
                     }

@@ -2,7 +2,6 @@ package com.example.leakypete.operationgreentampon.models;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,14 +14,8 @@ import android.widget.TextView;
 
 import com.example.leakypete.operationgreentampon.PostViewActivity;
 import com.example.leakypete.operationgreentampon.R;
-import com.example.leakypete.operationgreentampon.models.PostMalone;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -106,7 +99,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             super(v);
 
             mThumbnail = v.findViewById(R.id.imgThumbnail);
-            mTitle =  v.findViewById(R.id.txtTitle);
+            mTitle =  v.findViewById(R.id.txtPreviewTitle);
             mPostID = v.findViewById(R.id.txtUserID);
 
             layout =  itemView.findViewById(R.id.with_that_pistol_layout);

@@ -36,7 +36,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
 
         editContent = (EditText) findViewById(R.id.postContents);
-        editTitle = (EditText) findViewById(R.id.txtTitle);
+        editTitle = (EditText) findViewById(R.id.txtPreviewTitle);
         mPostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mUserRef = FirebaseDatabase.getInstance().getReference().child("Users");
         btnPost = (Button) findViewById(R.id.btnPreview);

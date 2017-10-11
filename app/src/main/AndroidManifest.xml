@@ -53,6 +53,10 @@
             android:name=".CreatePostActivity"
             android:label=""
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PostPreviewActivity"
+            android:label="@string/title_activity_post_preview"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

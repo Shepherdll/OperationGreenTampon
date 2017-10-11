@@ -64,4 +64,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt just
     <string name="title_activity_profile_page_adapter">ProfilePageAdapter</string>
     <string name="title_activity_create_post">CreatePostActivity</string>
     <string name="title_activity_nigger">nigger</string>
+    <string name="title_activity_post_preview">PostPreviewActivity</string>
 </resources>

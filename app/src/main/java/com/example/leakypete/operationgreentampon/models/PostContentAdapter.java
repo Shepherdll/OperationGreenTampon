@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.example.leakypete.operationgreentampon.PostViewActivity;
 import com.example.leakypete.operationgreentampon.R;
@@ -19,9 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
+/**
+ * Created by That Sexy Taylor on 10/11/2017.
+ */
 
-
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
+public class PostContentAdapter extends RecyclerView.Adapter {
     private ArrayList<PostMalone> mPosts;
     private Context mContext;
     String dickass = "";
@@ -32,7 +34,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     ImageView ItemImage;
 
 
-    public PostAdapter(ArrayList<PostMalone> posts, Context dick) {
+    public PostContentAdapter(ArrayList<PostMalone> posts, Context dick) {
         mPosts = posts;
         mContext = dick;
     }
@@ -42,22 +44,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     @Override
-    public PostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.withthatpistol, parent, false);
+        View dick;
 
-        // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        if(mContext instanceof PostViewActivity)
+        {
+            // Inflate the custom layout
+            dick = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.post_item_view, parent, false);
+
+            // Return a new holder instance
+            return new PostViewHolder(dick);
+
+        }
+        else
+        {
+            // Inflate the custom layout
+            dick = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.posttext_item, parent, false);
+
+            // Return a new holder instance
+            return new PostEditViewHolder(dick);
+        }
+
+
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         // Get the data model based on position
         final PostMalone post = mPosts.get(position);
+
+        if(mContext instanceof PostViewActivity)
+        {
+            ((PostViewHolder)holder).lineContent.setText();
+        }
 
         // Set item views based on your views and data model
         final TextView title = holder.mTitle;
@@ -83,38 +105,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return mPosts.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class PostEditViewHolder extends RecyclerView.ViewHolder  {
 
-        private ImageView mThumbnail;
-        private TextView mTitle;
-        private TextView mPostID;
-        private String _email;
+        private EditText lineContent;
         private ConstraintLayout layout;
-        private Button mUpvote;
-        private Button mComments;
-        private Button mShare;
 
 
-        public ViewHolder(View v) {
+
+        public PostEditViewHolder(View v) {
             super(v);
 
-            mThumbnail = v.findViewById(R.id.imgThumbnail);
-            mTitle =  v.findViewById(R.id.txtTitle);
-            mPostID = v.findViewById(R.id.txtUserID);
+
+            lineContent = v.findViewById(R.id.txtPostItem);
 
             layout =  itemView.findViewById(R.id.with_that_pistol_layout);
-            v.setOnClickListener(this);
+
         }
 
-        @Override
-        public void onClick(View v) {
-            Context context = itemView.getContext();
-            Intent intent = new Intent(context, PostViewActivity.class);
-            // intent.putExtra("image_id", );
-            intent.putExtra("title", mTitle.getText().toString());
-            intent.putExtra("username", mPostID.getText().toString());
-            intent.putExtra("email",_email);
-            context.startActivity(intent);
+
+
+
+    }
+    public static class PostViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView lineContent;
+        private ConstraintLayout layout;
+
+
+
+        public PostViewHolder(View v) {
+            super(v);
+
+
+            lineContent = v.findViewById(R.id.txtPostItem);
+
+            layout =  itemView.findViewById(R.id.with_that_pistol_layout);
+
         }
     }
 }

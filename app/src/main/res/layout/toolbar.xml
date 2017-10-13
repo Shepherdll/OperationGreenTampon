@@ -26,6 +26,14 @@
         app:srcCompat="@drawable/ic_filled"
         tools:layout_editor_absoluteX="410dp"
         tools:layout_editor_absoluteY="30dp" />
+    <ImageView
+        android:id="@+id/home"
+        android:layout_width="43dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_cat"
+        tools:layout_editor_absoluteX="410dp"
+        tools:layout_editor_absoluteY="30dp" />
 
 </android.support.v7.widget.Toolbar>
 

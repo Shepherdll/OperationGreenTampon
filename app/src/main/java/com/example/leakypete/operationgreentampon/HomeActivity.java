@@ -85,6 +85,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
         mConnecPager = new HomePageAdapter(getSupportFragmentManager());
 
         nigger = (ImageView) findViewById(R.id.settings);
@@ -141,11 +142,17 @@ public class HomeActivity extends AppCompatActivity {
                             .normalText("Create a Post").listener(new OnBMClickListener() {
                                 @Override
                                 public void onBoomButtonClick(int index) {
-                                Intent createPostActivity = new Intent(HomeActivity.this, CreatePostActivity.class);
-                                    startActivity(createPostActivity);
-                                    finish();
-                                    overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
-
+                                    user = FirebaseAuth.getInstance().getCurrentUser();
+                                    if (user == null) {
+                                        LoginDialog();
+                                    }
+                                    else
+                                    {
+                                        Intent createPostActivity = new Intent(HomeActivity.this, CreatePostActivity.class);
+                                        startActivity(createPostActivity);
+                                        finish();
+                                        overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+                                    }
                                 }
                             });
                     bmb.addBuilder(builder);

@@ -10,21 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class CreatePostActivity extends AppCompatActivity {
 
     private DatabaseReference mPostsRef,mUserRef;
-    private Button btnPost;
+    private Button btnPostPrv;
+
     EditText editTitle,editContent;
-    String name,email,title,content;
-    HashMap<String, String> post;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,59 +31,26 @@ public class CreatePostActivity extends AppCompatActivity {
 
 
         editContent = (EditText) findViewById(R.id.postContents);
-        editTitle = (EditText) findViewById(R.id.txtPreviewTitle);
+        editTitle = (EditText) findViewById(R.id.txtTitle);
+
         mPostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mUserRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        btnPost = (Button) findViewById(R.id.btnPreview);
+        btnPostPrv = (Button) findViewById(R.id.btnPreview);
 
-    btnPost.setOnClickListener(new View.OnClickListener() {
+    btnPostPrv.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            makePost();
+
+            Intent dickass = new Intent(CreatePostActivity.this, PostPreviewActivity.class);
+            dickass.putExtra("title", editTitle.getText().toString());
+            dickass.putExtra("content", editContent.getText().toString());
+            dickass.putExtra("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            startActivity(dickass);
+            finish();
+            overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         }
     });
 
-    }
-
-    private void makePost(){
-        post = new HashMap<String, String>();
-        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        title = editTitle.getText().toString();
-        content = editContent.getText().toString();
-
-        post.put("Email", email);
-        post.put("Title", title);
-        post.put("Content", content);
-
-
-        mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-                    for (DataSnapshot penisdick : dataSnapshot.getChildren())
-                    {
-                        String dildo = penisdick.child("Email").getValue(String.class).replace(".",",");
-                        if (dildo.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail().replace(".",",")))
-                        {
-                            name = penisdick.child("Name").getValue(String.class);
-                            post.put("Name", name);
-                            mPostsRef.push().setValue(post);
-                            break;
-                        }
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-        //mPostsRef.push().setValue(post);
     }
 
     @Override

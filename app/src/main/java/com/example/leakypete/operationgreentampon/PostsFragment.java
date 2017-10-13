@@ -47,9 +47,6 @@ public class PostsFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         mPostRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
-
-
-
         mPostRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,7 +58,7 @@ public class PostsFragment extends Fragment {
                         String email = postSnapshot.child("Email").getValue(String.class);
 
                         if(email.equals(auth.getCurrentUser().getEmail()))
-                            posts.add(new PostMalone(title, name, content));
+                            posts.add(new PostMalone(title, name, email));
 
                     }
 
@@ -76,6 +73,7 @@ public class PostsFragment extends Fragment {
 
             }
         });
+
         //Recycler View
         recyclerView = penis.findViewById(R.id.brenGay);
 

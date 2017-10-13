@@ -7,7 +7,7 @@
     tools:context="com.example.leakypete.operationgreentampon.PostViewActivity">
 
     <TextView
-        android:id="@+id/txtPreviewTitle"
+        android:id="@+id/txtTitle"
         android:layout_width="330dp"
         android:layout_height="48dp"
         android:text="Title"
@@ -34,7 +34,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="87dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/txtPreviewTitle"
+        app:layout_constraintLeft_toLeftOf="@+id/txtTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.0" />
 
